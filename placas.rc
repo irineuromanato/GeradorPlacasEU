@@ -1,0 +1,26 @@
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::BufWriter;
+
+fn main() {
+    let letras_numeros = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".chars().collect::<Vec<char>>();
+    let mut buffer = BufWriter::new(File::create("placasdecarros.txt").unwrap());
+
+    for i in 0..letras_numeros.len() {
+        for j in 0..letras_numeros.len() {
+            for k in 0..letras_numeros.len() {
+                for l in 0..letras_numeros.len() {
+                    for m in 0..letras_numeros.len() {
+                        for n in 0..letras_numeros.len() {
+                            let placa = format!("{}{}-{}{}-{}{}\n", 
+                                letras_numeros[i], letras_numeros[j], 
+                                letras_numeros[k], letras_numeros[l], 
+                                letras_numeros[m], letras_numeros[n]);
+                            buffer.write(placa.as_bytes()).unwrap();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
