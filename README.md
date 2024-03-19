@@ -1,2 +1,2 @@
 # GeradorPlacasEU
-Gerador de Placas Europeias em Rust
+Gerador de Placas Europeias
