@@ -1,9 +1,19 @@
+/* 
+ Gerador de Placas Europeis, nessa versão ele mostra o percentual e a estatistica de quantas placas podem ser geradas.
+ O proposito desse gerador é explorar a linguagem rust e suas possibilidades
+ Fiz o mesmo programa em C++ e o tempo de execução era 18% maior
+ a Mascara de uma placa europeia é XX-XX-XX sendo que em todas posições podem haver letras de A-Z e numeros de 0-9
+*/
+
+// define quais bibliotecas serão utilizadas
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufWriter;
 use num_format::{Locale, ToFormattedString};
 
 fn main() {
+
+
     let letras_numeros = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".chars().collect::<Vec<char>>();
     let total_combinacoes: usize = letras_numeros.len().pow(6);
     println!("Total de combinações possíveis: {}", total_combinacoes.to_formatted_string(&Locale::en));
