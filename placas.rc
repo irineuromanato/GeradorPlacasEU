@@ -1,11 +1,26 @@
+/* 
+ Gerador de Placas Europeis
+ O proposito desse gerador é explorar a linguagem rust e suas possibilidades
+ Fiz o mesmo programa em C++ e o tempo de execução era 18% maior
+ a Mascara de uma placa europeia é XX-XX-XX sendo que em todas posições podem haver letras de A-Z e numeros de 0-9
+*/
+
+// define as bibliotecas que que serão usadas
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufWriter;
 
+// 
 fn main() {
+
+    // define as letras e numeros que podem ser utilizados na composição da placa
     let letras_numeros = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".chars().collect::<Vec<char>>();
+
+    // define o nome do arquivo de saida para as bibliotecas, vale lembrar que esse arquivo fica muito grande se gerar todas combinações
     let mut buffer = BufWriter::new(File::create("placasdecarros.txt").unwrap());
 
+    // sequencia de for começando pela posição 0 e aumentando 
+    // particularmente não gostei dessa solução que usei, mas é meu primeiro programa em rust.
     for i in 0..letras_numeros.len() {
         for j in 0..letras_numeros.len() {
             for k in 0..letras_numeros.len() {
@@ -16,6 +31,9 @@ fn main() {
                                 letras_numeros[i], letras_numeros[j], 
                                 letras_numeros[k], letras_numeros[l], 
                                 letras_numeros[m], letras_numeros[n]);
+
+                            // para não haver buffer overflow para cada sequencia ele salva no arquivo, talvez seja melhor mudar esse codigo para 
+                            // cada 1000 placas geradas salvar em arquivo.
                             buffer.write(placa.as_bytes()).unwrap();
                         }
                     }
