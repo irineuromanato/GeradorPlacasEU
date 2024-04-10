@@ -1,1 +1,6 @@
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+* text=auto
+
 *.rc linguist-language=Rust
